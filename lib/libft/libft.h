@@ -6,7 +6,7 @@
 /*   By: rimagalh <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 18:00:47 by rimagalh          #+#    #+#             */
-/*   Updated: 2024/12/10 15:54:41 by rimagalh         ###   ########.fr       */
+/*   Updated: 2025/03/08 14:00:06 by rimagalh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@
 
 //og libft
 int		ft_atoi(const char *nptr);
+long	ft_atol(const char *nptr);
 void	ft_bzero(void *s, size_t n);
 void	*ft_calloc(size_t nmemb, size_t size);
 int		ft_isalnum(int c);

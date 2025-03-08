@@ -6,7 +6,7 @@
 #    By: rimagalh <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/18 15:36:52 by rimagalh          #+#    #+#              #
-#    Updated: 2024/12/10 15:54:31 by rimagalh         ###   ########.fr        #
+#    Updated: 2025/03/08 14:08:32 by rimagalh         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,6 +16,7 @@ CFLAGS = -Wall -Wextra -Werror
 NAME = libft.a
 
 SRC = ft_atoi.c \
+	ft_atol.c \
 	ft_bzero.c \
 	ft_calloc.c \
 	ft_get_next_line.c \

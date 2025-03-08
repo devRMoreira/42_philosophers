@@ -6,17 +6,18 @@
 #    By: rimagalh <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/08 13:23:12 by rimagalh          #+#    #+#              #
-#    Updated: 2025/03/08 13:25:51 by rimagalh         ###   ########.fr        #
+#    Updated: 2025/03/08 14:06:52 by rimagalh         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
+# CFLAGS = -Wall -Wextra -Werror -g -fsanitize=thread
 
 NAME = philo
 
 SRC = src/main.c \
+	src/parse.c \
 
 OBJ = $(SRC:.c=.o)
 
@@ -43,7 +44,4 @@ fclean: clean
 
 re: fclean all
 
-gdb: CFLAGS += -g
-gdb: re
-
-.PHONY: all clean fclean re gdb
+.PHONY: all clean fclean re
