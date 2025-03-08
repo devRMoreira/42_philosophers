@@ -6,7 +6,7 @@
 /*   By: rimagalh <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 13:39:46 by rimagalh          #+#    #+#             */
-/*   Updated: 2025/03/08 16:38:00 by rimagalh         ###   ########.fr       */
+/*   Updated: 2025/03/08 16:48:04 by rimagalh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@
 # include <pthread.h>
 # include <sys/time.h>
 # include <stdint.h>
-# include "../lib/libft/libft.h"
-
-struct	s_data;
+# include <stdio.h>
+# include <stdlib.h>
+# include <string.h>
 
 typedef struct s_data //needs free
 {
@@ -28,7 +28,7 @@ typedef struct s_data //needs free
 	int 			time_sleep;
 	int 			amount_eat;
 	long			start_time;
-	t_philo			*philos; //needs free (array)
+	struct s_philo	*philos; //needs free (array)
 	pthread_t		*threads; //needs free (array)
 	pthread_mutex_t	*forks; //needs free (array)
 	pthread_mutex_t	print_lock; //needs free (destroy)
@@ -48,5 +48,8 @@ long	*parse_input(char **argv, t_data *philo);
 void	print_error(char *descriptor);
 void	init_struct(long *input, t_data *data);
 void	*philosopher(void *arg);
+void	init_struct(long *input, t_data *data);
+long	get_current_time();
+
 
 #endif
