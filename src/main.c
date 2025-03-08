@@ -6,7 +6,7 @@
 /*   By: rimagalh <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 13:23:16 by rimagalh          #+#    #+#             */
-/*   Updated: 2025/03/08 14:39:43 by rimagalh         ###   ########.fr       */
+/*   Updated: 2025/03/08 14:50:35 by rimagalh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,13 @@ void print_struct(t_data *data)
 
 int main(int argc, char	**argv)
 {
-	t_data philo;
+	t_data data;
 
 	if(argc >= 5 && argc <= 6)
 	{
-		if(!parse_input(argv, &philo))
+		if(!parse_input(argv, &data))
 			return (print_error("Invalid arguments"), 1);
-		print_data(&philo);
+		print_data(&data);
 	}
 
 	return (0);
