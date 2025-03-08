@@ -6,7 +6,7 @@
 /*   By: rimagalh <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 15:46:12 by rimagalh          #+#    #+#             */
-/*   Updated: 2025/03/08 16:39:28 by rimagalh         ###   ########.fr       */
+/*   Updated: 2025/03/08 16:49:22 by rimagalh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ static t_philo	new_philo(int id, t_data *data)
 	philo.last_meal = -1;
 	philo.left = &data->forks[id];
 	philo.right = &data->forks[(id + 1) % data->total_philo];
-	philo.data = &data;
+	philo.data = data;
 	return (philo);
 }
 

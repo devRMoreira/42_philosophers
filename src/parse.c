@@ -6,7 +6,7 @@
 /*   By: rimagalh <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 13:50:13 by rimagalh          #+#    #+#             */
-/*   Updated: 2025/03/08 15:47:41 by rimagalh         ###   ########.fr       */
+/*   Updated: 2025/03/08 16:48:30 by rimagalh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,33 @@
 //* 2- time to eat
 //* 3- time to sleep
 //* 4- times to eat (can be 0)
+
+static long	ft_atol(const char *nptr)
+{
+	long	sum;
+	long	i;
+	long	neg;
+
+	if (!nptr)
+		return (0);
+	i = 0;
+	neg = 1;
+	sum = 0;
+	while (nptr[i] == 32 || (nptr[i] >= 9 && nptr[i] <= 13))
+		i++;
+	if (nptr[i] == '-' || nptr[i] == '+')
+	{
+		if (nptr[i] == '-')
+			neg = -1;
+		i++;
+	}
+	while (nptr[i] != '\0' && nptr[i] >= '0' && nptr[i] <= '9')
+	{
+		sum = sum * 10 + (nptr[i] - '0');
+		i++;
+	}
+	return (sum * neg);
+}
 
 static int validate(long *input)
 {
@@ -37,16 +64,16 @@ static int is_num(char *str)
 	int i;
 
 	i = 0;
-	while(i < ft_strlen(str))
+	while(str[i] != '\0')
 	{
-		if(!ft_isdigit(str[i]))
+		if(str[i] < '0' || str[i] > '9')
 			return (0);
 		i++;
 	}
 	return (1);
 }
 
-int parse_input(char **argv, t_data *data)
+long	*parse_input(char **argv, t_data *data)
 {
 	int i;
 	long *input;
@@ -55,7 +82,7 @@ int parse_input(char **argv, t_data *data)
 	input = malloc(sizeof(long) * 5);
 	if (!input)
 		return (NULL);
-	ft_memset(input, 0, sizeof(long) * 5);
+	memset(input, 0, sizeof(long) * 5);
 	while(++i < 5)
 	{
 		if(!is_num(argv[i]))
@@ -69,7 +96,7 @@ int parse_input(char **argv, t_data *data)
 	if(!validate(input))
 		return (free(input), NULL);
 
-	return (input, 1);
+	return (input);
 }
 
 
