@@ -6,7 +6,7 @@
 /*   By: rimagalh <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 13:50:13 by rimagalh          #+#    #+#             */
-/*   Updated: 2025/03/08 14:58:26 by rimagalh         ###   ########.fr       */
+/*   Updated: 2025/03/08 15:47:41 by rimagalh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,14 +31,6 @@ static int validate(long *input)
 		return (0);
 	return (1);
 }
-static void init_struct(long *input, t_data *data)
-{
-	data->total_philo = input[0];
-	data->time_die = input[1];
-	data->time_eat = input[2];
-	data->time_sleep = input[3];
-	data->amount_eat = input[4];
-}
 
 static int is_num(char *str)
 {
@@ -62,12 +54,12 @@ int parse_input(char **argv, t_data *data)
 	i = 0;
 	input = malloc(sizeof(long) * 5);
 	if (!input)
-		return (1);
-	ft_memset(input, 0, sizeof(long *) * 5);
+		return (NULL);
+	ft_memset(input, 0, sizeof(long) * 5);
 	while(++i < 5)
 	{
 		if(!is_num(argv[i]))
-			return (free(input), 0);
+			return (free(input), NULL);
 		input[i - 1] = ft_atol(argv[i]);
 	}
 
@@ -75,10 +67,9 @@ int parse_input(char **argv, t_data *data)
 		input[4] = ft_atol(argv[5]);
 
 	if(!validate(input))
-		return (free(input), 0);
+		return (free(input), NULL);
 
-	init_struct(input, data);
-	return (1);
+	return (input, 1);
 }
 
 

@@ -6,11 +6,16 @@
 /*   By: rimagalh <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 13:23:16 by rimagalh          #+#    #+#             */
-/*   Updated: 2025/03/08 14:50:35 by rimagalh         ###   ########.fr       */
+/*   Updated: 2025/03/08 16:38:13 by rimagalh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
+
+void	*philosopher(void *arg)
+{
+	return (NULL);
+}
 
 void print_error(char *descriptor)
 {
@@ -20,23 +25,28 @@ void print_error(char *descriptor)
 //! delete whenever
 void print_struct(t_data *data)
 {
-    printf("Total Philosophers: %d\n", data->total_philo);
-    printf("Time to Die: %d\n", data->time_die);
-    printf("Time to Eat: %d\n", data->time_eat);
-    printf("Time to Sleep: %d\n", data->time_sleep);
-    printf("Amount to Eat: %d\n", data->amount_eat);
+    ft_printf("Total Philosophers: %d\n", data->total_philo);
+    ft_printf("Time to Die: %d\n", data->time_die);
+    ft_printf("Time to Eat: %d\n", data->time_eat);
+    ft_printf("Time to Sleep: %d\n", data->time_sleep);
+    ft_printf("Amount to Eat: %d\n", data->amount_eat);
 }
 
 int main(int argc, char	**argv)
 {
 	t_data data;
+	long	*input;
 
 	if(argc >= 5 && argc <= 6)
 	{
-		if(!parse_input(argv, &data))
+		input = parse_input(argv, &data);
+		if(!input)
 			return (print_error("Invalid arguments"), 1);
 		print_data(&data);
+		init_struct(input, &data);
 	}
+	else
+		return (print_error("Invalid arguments"), 1);
 
 	return (0);
 }
