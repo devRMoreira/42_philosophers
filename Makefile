@@ -6,7 +6,7 @@
 #    By: rimagalh <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/08 13:23:12 by rimagalh          #+#    #+#              #
-#    Updated: 2025/03/08 16:51:27 by rimagalh         ###   ########.fr        #
+#    Updated: 2025/03/13 12:26:25 by rimagalh         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,8 @@ NAME = philo
 SRC = src/main.c \
 	src/parse.c \
 	src/utils.c \
+	src/init.c \
+	src/dining.c \
 
 OBJ = $(SRC:.c=.o)
 

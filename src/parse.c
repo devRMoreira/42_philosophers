@@ -6,7 +6,7 @@
 /*   By: rimagalh <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 13:50:13 by rimagalh          #+#    #+#             */
-/*   Updated: 2025/03/08 16:48:30 by rimagalh         ###   ########.fr       */
+/*   Updated: 2025/03/13 11:39:37 by rimagalh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 //* 2- time to eat
 //* 3- time to sleep
 //* 4- times to eat (can be 0)
+
 
 static long	ft_atol(const char *nptr)
 {
@@ -45,6 +46,17 @@ static long	ft_atol(const char *nptr)
 	}
 	return (sum * neg);
 }
+
+static int check_size(char *str)
+{
+	long n;
+
+	n = ft_atol(str);
+	if(n >= 0 && n <= INT_MAX)
+		return 1;
+	return 0;
+}
+
 
 static int validate(long *input)
 {
@@ -85,13 +97,15 @@ long	*parse_input(char **argv, t_data *data)
 	memset(input, 0, sizeof(long) * 5);
 	while(++i < 5)
 	{
-		if(!is_num(argv[i]))
+		if(!is_num(argv[i]) || !check_size(argv[i]))
 			return (free(input), NULL);
 		input[i - 1] = ft_atol(argv[i]);
 	}
 
 	if(argv[5])
 		input[4] = ft_atol(argv[5]);
+	else
+		input[4] == NULL;
 
 	if(!validate(input))
 		return (free(input), NULL);

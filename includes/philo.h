@@ -6,7 +6,7 @@
 /*   By: rimagalh <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 13:39:46 by rimagalh          #+#    #+#             */
-/*   Updated: 2025/03/08 16:48:04 by rimagalh         ###   ########.fr       */
+/*   Updated: 2025/03/13 12:24:18 by rimagalh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,33 +15,48 @@
 
 # include <pthread.h>
 # include <sys/time.h>
-# include <stdint.h>
+# include <limits.h>
 # include <stdio.h>
 # include <stdlib.h>
+# include <unistd.h>
 # include <string.h>
+
+
+typedef struct s_data t_data;
+typedef struct s_fork t_fork;
+typedef struct s_philo t_philo;
 
 typedef struct s_data //needs free
 {
-	int 			total_philo;
-	int 			time_die;
-	int 			time_eat;
-	int 			time_sleep;
-	int 			amount_eat;
+	long 			total_philo;
+	long 			time_die;
+	long 			time_eat;
+	long 			time_sleep;
+	long 			total_meal;
 	long			start_time;
-	struct s_philo	*philos; //needs free (array)
+	int				end; //0 or 1 philo dies or all full;
+	t_fork			*forks; //needs free (array)
+	t_philo			*philos; //needs free (array)
 	pthread_t		*threads; //needs free (array)
-	pthread_mutex_t	*forks; //needs free (array)
-	pthread_mutex_t	print_lock; //needs free (destroy)
+	pthread_mutex_t	mutex; //needs free (destroy)
 }		t_data;
+
+typedef struct s_fork
+{
+	int id;
+	pthread_mutex_t fork;
+}		t_fork;
 
 typedef struct s_philo //needs free
 {
 	int				id;
-	int				meals_eaten;
-	long			last_meal;
-	struct s_data 	*data;
-	pthread_mutex_t	*left; //needs free (destroy)
-	pthread_mutex_t	*right; //needs free (destroy)
+	long			meals_eaten;
+	long			last_meal; //time he ate last meal
+	int				full; //0 or 1
+	t_fork			*left_fork; //needs free (destroy)
+	t_fork			*right_fork; //needs free (destroy)
+	t_data 			*data; //pointer to data
+	pthread_t 		thread; //each philo is a thread
 }		t_philo;
 
 long	*parse_input(char **argv, t_data *philo);
@@ -50,6 +65,6 @@ void	init_struct(long *input, t_data *data);
 void	*philosopher(void *arg);
 void	init_struct(long *input, t_data *data);
 long	get_current_time();
-
+void	*ft_malloc(size_t total_bytes);
 
 #endif
