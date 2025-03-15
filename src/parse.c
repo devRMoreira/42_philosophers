@@ -6,7 +6,7 @@
 /*   By: rimagalh <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 13:50:13 by rimagalh          #+#    #+#             */
-/*   Updated: 2025/03/13 11:39:37 by rimagalh         ###   ########.fr       */
+/*   Updated: 2025/03/15 11:55:05 by rimagalh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,7 @@ long	*parse_input(char **argv, t_data *data)
 	else
 		input[4] == NULL;
 
+	//* probably remove this redundant check
 	if(!validate(input))
 		return (free(input), NULL);
 
