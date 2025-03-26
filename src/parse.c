@@ -6,7 +6,7 @@
 /*   By: rimagalh <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 13:50:13 by rimagalh          #+#    #+#             */
-/*   Updated: 2025/03/15 11:55:05 by rimagalh         ###   ########.fr       */
+/*   Updated: 2025/03/26 15:11:39 by rimagalh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ static int validate(long *input)
 		if(input[i] <= 0)
 			return (0);
 	if(input[4] < 0)
-		return (0);
+		return (1);
 	return (1);
 }
 
@@ -85,7 +85,7 @@ static int is_num(char *str)
 	return (1);
 }
 
-long	*parse_input(char **argv, t_data *data)
+long	*parse_input(char **argv, int argc)
 {
 	int i;
 	long *input;
@@ -102,10 +102,10 @@ long	*parse_input(char **argv, t_data *data)
 		input[i - 1] = ft_atol(argv[i]);
 	}
 
-	if(argv[5])
+	if(argc == 6)
 		input[4] = ft_atol(argv[5]);
 	else
-		input[4] == NULL;
+		input[4] = -1;
 
 	//* probably remove this redundant check
 	if(!validate(input))
