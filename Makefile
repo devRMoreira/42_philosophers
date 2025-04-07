@@ -5,24 +5,22 @@
 #                                                     +:+ +:+         +:+      #
 #    By: rimagalh <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2025/03/08 13:23:12 by rimagalh          #+#    #+#              #
-#    Updated: 2025/03/26 15:14:35 by rimagalh         ###   ########.fr        #
+#    Created: 2025/04/05 12:47:42 by rimagalh          #+#    #+#              #
+#    Updated: 2025/04/07 16:52:51 by rimagalh         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-
 CC = cc
-# CFLAGS = -Wall -Wextra -Werror -g -fsanitize=thread
+CFLAGS = -Wall -Wextra -Werror
 
 NAME = philo
 
-SRC = src/init.c \
- 	src/main.c \
-	src/monitor.c \
-	src/parse.c \
-	src/routine.c \
-	src/routine_utils.c \
-	src/utils.c \
+SRC = init.c \
+ 	main.c \
+	monitor.c \
+	parsing.c \
+	routine.c \
+	utils.c \
 
 OBJ = $(SRC:.c=.o)
 
@@ -42,4 +40,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re sani
