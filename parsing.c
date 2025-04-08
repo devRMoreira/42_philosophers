@@ -12,16 +12,16 @@
 
 #include "philo.h"
 
-static long ft_atol(char *str)
+static long	ft_atol(char *str)
 {
-	int i;
-	int neg;
-	long res;
+	int		i;
+	int		neg;
+	long	res;
 
 	i = -1;
 	neg = 1;
 	res = 0;
-	if(str[++i] == '-')
+	if (str[++i] == '-')
 		neg *= -1;
 	if (str[i] == '+' && str[i - 1] != '+' && str[i - 1] != '-')
 		i++;
@@ -31,34 +31,33 @@ static long ft_atol(char *str)
 		res += (str[i] - 48);
 		i++;
 	}
-
 	return (res * neg);
 }
 
-int ft_valid_input(int ac, char **av)
+int	ft_valid_input(int ac, char **av)
 {
-	int i;
-	long res;
+	int		i;
+	long	res;
 
 	i = ac - 1;
-	if(ft_atol(av[1]) > 200)
+	if (ft_atol(av[1]) > 200)
 		return (0);
-	if(ac == 6 && ft_atol(av[5]) < 0)
+	if (ac == 6 && ft_atol(av[5]) < 0)
 		return (0);
 	while (i > 0)
 	{
-		if(!ft_isnumber(av[i]))
-			return 0;
+		if (!ft_isnumber(av[i]))
+			return (0);
 		i--;
 	}
 	i = 4;
-	while(i > 0)
+	while (i > 0)
 	{
 		res = ft_atol(av[i]);
-		if(res <= 0)
-			return 0;
-		if(res > INT_MAX)
-			return 0;
+		if (res <= 0)
+			return (0);
+		if (res > INT_MAX)
+			return (0);
 		i--;
 	}
 	return (1);

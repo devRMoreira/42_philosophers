@@ -12,18 +12,18 @@
 
 #include "philo.h"
 
-int ft_atoi(const char *str)
+int	ft_atoi(const char *str)
 {
-	int i;
-	int neg;
-	int res;
+	int	i;
+	int	neg;
+	int	res;
 
 	i = -1;
 	neg = 1;
 	res = 0;
 	while ((str[i] >= 9 && str[i] <= 13) || str[i] == ' ')
 		i++;
-	if(str[++i] == '-')
+	if (str[++i] == '-')
 		neg *= -1;
 	if (str[i] == '+' && str[i - 1] != '+' && str[i - 1] != '-')
 		i++;
@@ -33,19 +33,20 @@ int ft_atoi(const char *str)
 		res += (str[i] - 48);
 		i++;
 	}
-
 	return (res * neg);
 }
 
-int		ft_isnumber(char *str)
-{	int i;
+int	ft_isnumber(char *str)
+{
+	int	i;
+
 	i = 0;
-	if(str[0] == '+')
+	if (str[0] == '+')
 		i++;
-	while(str[i])
+	while (str[i])
 	{
-		if(str[i] < 48 || str[i] > 57 )
-			return 0;
+		if (str[i] < 48 || str[i] > 57)
+			return (0);
 		i++;
 	}
 	return (1);
@@ -53,10 +54,10 @@ int		ft_isnumber(char *str)
 
 void	ft_free(t_data *data)
 {
-	int i;
+	int	i;
 
 	i = -1;
-	while(++i < data->philos_total)
+	while (++i < data->philos_total)
 	{
 		pthread_mutex_destroy(&data->forks[i]);
 	}
@@ -67,7 +68,7 @@ void	ft_free(t_data *data)
 	free(data->philos_threads);
 }
 
-size_t ft_get_current_time()
+size_t	ft_get_current_time(void)
 {
 	struct timeval	time;
 
