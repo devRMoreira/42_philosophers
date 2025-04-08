@@ -82,5 +82,5 @@ void	ft_usleep(size_t time_sleep)
 	start = 0;
 	start = ft_get_current_time();
 	while ((ft_get_current_time() - start) < time_sleep)
-		usleep(500);
+		usleep(100);
 }

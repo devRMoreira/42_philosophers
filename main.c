@@ -6,7 +6,7 @@
 /*   By: rimagalh <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/05 12:48:18 by rimagalh          #+#    #+#             */
-/*   Updated: 2025/04/07 16:56:30 by rimagalh         ###   ########.fr       */
+/*   Updated: 2025/04/08 15:38:37 by rimagalh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ void 	ft_print(t_philo *philo, char *str)
 {
 	size_t time;
 
-	time = ft_get_current_time() - philo->data->time_start;
 	pthread_mutex_lock(&philo->data->print);
+	time = ft_get_current_time() - philo->data->time_start;
 	printf("%ld %i %s\n", time, philo->id, str);
 	pthread_mutex_unlock(&philo->data->print);
 }
@@ -35,7 +35,7 @@ int main(int ac, char **av)
 		if(ft_init_data(&data, av, ac))
 			return printf("Data init error."), 1;
 		if(!ft_init_threads(&data))
-			return (ft_free(&data), printf("Thread init error."));
+			return (ft_free(&data), printf("Thread error."));
 		ft_free(&data);
 	}
 	else

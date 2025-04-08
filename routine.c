@@ -32,6 +32,8 @@ void *ft_routine (void *philosopher)
 {
 	t_philo *philo;
 	philo = (t_philo *)philosopher;
+	pthread_mutex_lock(&philo->data->ready);
+	pthread_mutex_unlock(&philo->data->ready);
 	philo->meal_timestamp = philo->data->time_start;
 	if(philo->data->philos_total == 1)
 	{
