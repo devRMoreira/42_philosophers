@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rimagalh <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/05 12:48:12 by rimagalh          #+#    #+#             */
-/*   Updated: 2025/04/08 16:03:52 by rimagalh         ###   ########.fr       */
+/*   Updated: 2025/04/10 02:59:58 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,6 @@ void	*ft_routine(void *philosopher);
 void	ft_monitor_rout(t_data *data);
 void	ft_print(t_philo *philo, char *str);
 void	ft_usleep(size_t time_sleep);
-int		t_valid_input(int ac, char **av);
+int		ft_valid_input(int ac, char **av);
 
 #endif
